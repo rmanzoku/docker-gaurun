@@ -14,6 +14,6 @@ ARG confdir=conf
 ADD $confdir/ios/cert.pem /etc/gaurun/ios/cert.pem
 ADD $confdir/ios/key.pem /etc/gaurun/ios/key.pem
 
-ADD conf/gaurun.toml /etc/gaurun/
+ADD $confdir/gaurun.toml /etc/gaurun/
 
 CMD ["/usr/local/bin/gaurun", "-c", "/etc/gaurun/gaurun.toml"]
