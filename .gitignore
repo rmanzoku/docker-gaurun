@@ -1,4 +1,5 @@
 dist/*
+conf/*
 !.gitkeep
 
 gaurun.toml
