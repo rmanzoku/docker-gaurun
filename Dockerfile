@@ -1,6 +1,8 @@
 FROM alpine:3.6
 MAINTAINER rmanzoku <manzoku.ryo@gmail.com>
 
+RUN apk add --no-cache ca-certificates
+
 RUN mkdir /etc/gaurun/
 RUN mkdir /etc/gaurun/ios
 
