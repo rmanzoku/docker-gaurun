@@ -5,6 +5,7 @@ RUN mkdir /etc/gaurun/
 RUN mkdir /etc/gaurun/ios
 
 ADD dist/gaurun/gaurun /usr/local/bin/
+ADD dist/gaurun/gaurun_recover /usr/local/bin/
 
 ADD conf/ios/cert.pem /etc/gaurun/ios/cert.pem
 ADD conf/ios/key.pem /etc/gaurun/ios/key.pem
