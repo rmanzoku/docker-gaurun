@@ -5,7 +5,10 @@ REPO := rmanzoku/gaurun
 export REPO
 
 build: dist/gaurun/gaurun Dockerfile
-	docker build . -t ${REPO} --build-arg confdir=conf
+	docker build . -t ${REPO}
+
+run:
+	docker run -d -e CONF_PREFIX=conf/prod/ -p 1056:1056 ${REPO}
 
 setup:
 	wget "https://github.com/mercari/gaurun/releases/download/v${GAURUN_VERSION}/gaurun-linux-amd64-${GAURUN_VERSION}.tar.gz" \
