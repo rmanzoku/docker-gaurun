@@ -1,19 +1,17 @@
 FROM alpine:3.6
 MAINTAINER rmanzoku <manzoku.ryo@gmail.com>
 
+RUN mkdir -p /var/app/current
+WORKDIR /var/app/current
+
 RUN apk add --no-cache ca-certificates
 
-RUN mkdir /etc/gaurun/
-RUN mkdir /etc/gaurun/ios
+RUN mkdir bin
 
-ADD dist/gaurun/gaurun /usr/local/bin/
-ADD dist/gaurun/gaurun_recover /usr/local/bin/
+ADD dist/gaurun/gaurun bin/gaurun
+ADD dist/gaurun/gaurun_recover bin/gaurun_recover
 
-ARG confdir=conf
+ADD conf ./conf
 
-ADD $confdir/ios/cert.pem /etc/gaurun/ios/cert.pem
-ADD $confdir/ios/key.pem /etc/gaurun/ios/key.pem
-
-ADD $confdir/gaurun.toml /etc/gaurun/
-
-CMD ["/usr/local/bin/gaurun", "-c", "/etc/gaurun/gaurun.toml"]
+ENV CONF_PREFIX=conf/
+CMD ["sh", "-c", "bin/gaurun -c ${CONF_PREFIX}gaurun.toml"]
