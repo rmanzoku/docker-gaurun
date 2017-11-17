@@ -1,5 +1,5 @@
 FROM alpine:3.6
-MAINTAINER rmanzoku <manzoku.ryo@gmail.com>
+LABEL maintainer="rmanzoku <manzoku.ryo@gmail.com>"
 
 RUN mkdir -p /var/app/current
 WORKDIR /var/app/current
